@@ -1,0 +1,28 @@
+{
+  "name": "n8n-nexlayer-deployment",
+  "version": "1.0.0",
+  "description": "n8n workflow automation platform deployment for Nexlayer",
+  "main": "index.js",
+  "scripts": {
+    "start": "n8n start",
+    "build": "docker build -t n8n-nexlayer .",
+    "dev": "docker-compose up -d",
+    "stop": "docker-compose down"
+  },
+  "keywords": [
+    "n8n",
+    "workflow",
+    "automation",
+    "nexlayer",
+    "docker"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "n8n": "^1.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,44 @@
+name: n8n-workflow-automation
+description: n8n workflow automation platform
+version: 1.0.0
+
+container:
+  image: n8n-nexlayer:latest
+  port: 5678
+  healthcheck:
+    path: /healthz
+    interval: 30s
+    timeout: 10s
+    retries: 3
+
+environment:
+  N8N_BASIC_AUTH_ACTIVE: "true"
+  N8N_BASIC_AUTH_USER: "admin"
+  N8N_BASIC_AUTH_PASSWORD: "password"
+  N8N_HOST: "0.0.0.0"
+  N8N_PORT: "5678"
+  N8N_PROTOCOL: "http"
+  WEBHOOK_URL: "https://n8n-workflow-automation.nexlayer.app/"
+  GENERIC_TIMEZONE: "UTC"
+  N8N_ENCRYPTION_KEY: "your-secure-encryption-key-here"
+  N8N_USER_MANAGEMENT_DISABLED: "false"
+  N8N_DIAGNOSTICS_ENABLED: "false"
+
+resources:
+  cpu: "0.5"
+  memory: "512Mi"
+  storage: "1Gi"
+
+networking:
+  public: true
+  ssl: true
+
+scaling:
+  min_replicas: 1
+  max_replicas: 3
+  target_cpu_utilization: 70
+
+persistence:
+  enabled: true
+  path: /home/n8n/.n8n
+  size: "1Gi"

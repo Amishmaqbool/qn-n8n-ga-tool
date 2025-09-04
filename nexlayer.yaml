@@ -1,0 +1,28 @@
+application:
+  name: n8n-workflow-automation-v2
+  pods:
+    - name: n8n
+      image: n8nio/n8n:latest
+      path: "/"
+      servicePorts: [5678]
+      vars:
+        N8N_BASIC_AUTH_ACTIVE: "true"
+        N8N_BASIC_AUTH_USER: "admin"
+        N8N_BASIC_AUTH_PASSWORD: "password"
+        N8N_HOST: "0.0.0.0"
+        N8N_PORT: "5678"
+        N8N_PROTOCOL: "http"
+        WEBHOOK_URL: "https://n8n-workflow-automation-v2.nexlayer.app/"
+        GENERIC_TIMEZONE: "UTC"
+        N8N_ENCRYPTION_KEY: "n8n-encryption-key-2024-secure"
+        N8N_USER_MANAGEMENT_DISABLED: "false"
+        N8N_DIAGNOSTICS_ENABLED: "false"
+        N8N_LOG_LEVEL: "info"
+        N8N_EXECUTIONS_PROCESS: "main"
+        N8N_EXECUTIONS_MODE: "regular"
+        N8N_TEMPLATES_ENABLED: "true"
+        N8N_ONBOARDING_FLOW_DISABLED: "false"
+      volumes:
+        - name: n8n-data
+          size: "1Gi"
+          mountPath: "/home/n8n/.n8n"
